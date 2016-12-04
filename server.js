@@ -1,6 +1,9 @@
 var express = require('express')
 var app = express()
 
+app.get('/', function(req, res) {
+    res.send('put <h1> /whoami </h1> after url to get your infomation')
+})
 app.get('/whoami', function (req, res) {
 //   res.send(req.headers);
   var ip = req.headers['x-forwarded-for'];
@@ -18,6 +21,4 @@ app.get('/whoami', function (req, res) {
   res.send(result);
 })
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!')
-})
+app.listen(process.env.PORT || 8080)
